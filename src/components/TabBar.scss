@@ -1,0 +1,41 @@
+.tab-bar-container {
+  position: relative;
+  padding: 16px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+}
+
+.left-text,
+.right-text {
+  position: absolute;
+}
+
+.left-text {
+  left: 20px;
+}
+
+.right-text {
+  right: 20px;
+  cursor: pointer;
+}
+
+.middle-container {
+  width: 100%;
+  max-width: 160px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.active-tab,
+.tab {
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.active-tab {
+  $primaryBlue: hsl(220, 98%, 61%);
+  color: $primaryBlue;
+}

@@ -1,0 +1,127 @@
+$maxWidth: 540px;
+
+// dark theme colors
+
+$darkblue: hsl(235, 21%, 11%);
+$darkbluedesa: hsl(235, 24%, 19%);
+$grayblue: hsl(234, 39%, 85%);
+$graybluehover: hsl(236, 33%, 92%);
+$graybluedark: hsl(234, 11%, 52%);
+$graybluedark2: hsl(233, 14%, 35%);
+$graybluedark3: hsl(237, 14%, 26%);
+
+$darkPrimary: hsl(235, 35%, 84%);
+$darkSecondary: #7a7c91;
+
+$boxShadowDark: 0px 35px 50px -15px rgba(0, 0, 0, 0.5);
+
+.bg-dark {
+  background: $darkblue;
+}
+
+.bg2-dark {
+  background-color: $darkbluedesa;
+}
+
+.dark-shadow {
+  box-shadow: $boxShadowDark;
+}
+
+.color-primary-dark {
+  color: $darkPrimary;
+}
+
+.color-secondary-dark {
+  color: $darkSecondary;
+}
+
+.color-hover-dark {
+  color: $graybluedark;
+}
+
+// light theme colors
+
+$gray: hsl(0, 0%, 98%);
+$grayblue: hsl(236, 33%, 92%);
+$graybluelight: hsl(233, 11%, 84%);
+$graybluedark: hsl(236, 9%, 61%);
+$graybluedark2: hsl(235, 19%, 35%);
+
+$lightPrimary: #54545e;
+
+$boxShadowLight: 0px 35px 50px -15px rgba(194, 195, 214, 0.5);
+
+.bg-light {
+  background-color: $gray;
+}
+
+.bg2-light {
+  background-color: white;
+}
+
+.light-shadow {
+  box-shadow: $boxShadowLight;
+}
+
+.color-primary-light {
+  color: $lightPrimary;
+}
+
+.color-secondary-light {
+  color: $graybluedark;
+}
+
+.color-hover-light {
+  color: $graybluelight;
+}
+
+// font sizes
+
+.font-mobile {
+  // font-size:
+}
+
+// background images
+
+.bg-img-mobile-dark {
+  background-image: url("../images/bg-mobile-dark.jpg");
+}
+
+.bg-img-desktop-dark {
+  background-image: url("../images/bg-desktop-dark.jpg");
+}
+
+.bg-img-mobile-light {
+  background-image: url("../images/bg-mobile-light.jpg");
+}
+
+.bg-img-desktop-light {
+  background-image: url("../images/bg-desktop-light.jpg");
+}
+
+// display utils
+
+.none {
+  display: none !important;
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.column-stretch {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.full-width {
+  width: 100%;
+  max-width: $maxWidth;
+}
+
+.round {
+  border-radius: 5px;
+}
