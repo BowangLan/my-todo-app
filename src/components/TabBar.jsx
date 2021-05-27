@@ -5,7 +5,7 @@ import "./TabBar.scss";
 const TabBarInner = ({
   classes: classes_,
   todoList,
-  setTodoList,
+  handleClear,
   isMobile,
   tabList,
   currentTab,
@@ -21,13 +21,11 @@ const TabBarInner = ({
         isMobile ? "round" : null,
       ].join(" "),
       leftText: ["left-text", isMobile ? "none" : null].join(" "),
-      rightText: ["right-text", isMobile ? "none" : null].join(" "),
+      rightText: ["right-text", "pointer", isMobile ? "none" : null].join(" "),
     }),
     [classes_, isMobile]
   );
-  const handleClear = useCallback(() => {
-    setTodoList((preList) => preList.filter((item) => !item.check));
-  }, []);
+
   return (
     <div className={classes.container}>
       <span className={classes.leftText}>{`${todoList.length} item${
@@ -57,7 +55,7 @@ const TabBar = () => {
   const {
     classes,
     todoList,
-    setTodoList,
+    handleClear,
     isMobile,
     tabList,
     currentTab,
@@ -68,7 +66,7 @@ const TabBar = () => {
       <TabBarInner
         classes={classes}
         todoList={todoList}
-        setTodoList={setTodoList}
+        handleClear={handleClear}
         isMobile={isMobile}
         tabList={tabList}
         currentTab={currentTab}

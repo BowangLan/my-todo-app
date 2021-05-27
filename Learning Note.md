@@ -1,7 +1,8 @@
 # Problems
 
 Remaining problems:
-- When dragging items, the last item becomes invisible.
+- [ ] When dragging items, the item is removed from the list and the container becomes one item shorter.
+- [ ] Not-square circle (ellipsis) for CheckIcon.
 - A bunch of warnings when running the server.
 
 ### Last element remove first

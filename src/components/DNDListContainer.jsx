@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import List from "./List";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import { useGlobalContext } from "../context";
@@ -11,8 +11,13 @@ const reorder = (list, startIndex, endIndex) => {
   return result;
 };
 
-const DNDListContainer = ({ children }) => {
-  const { todoList, setTodoList } = useGlobalContext();
+const DNDListContainer = ({}) => {
+  const { todoList, setTodoList, classes } = useGlobalContext();
+
+  const containerClasses = useMemo(
+    () => ["list-container", classes.bg].join(" "),
+    [classes]
+  );
 
   const onDragEnd = React.useCallback(
     (result) => {
@@ -36,16 +41,18 @@ const DNDListContainer = ({ children }) => {
   );
 
   return (
-    <DragDropContext onDragEnd={onDragEnd}>
-      <Droppable droppableId="list">
-        {(provided) => (
-          <div ref={provided.innerRef} {...provided.droppableProps}>
-            {children}
-            {provided.placeholder}
-          </div>
-        )}
-      </Droppable>
-    </DragDropContext>
+    <div className={containerClasses}>
+      <DragDropContext onDragEnd={onDragEnd}>
+        <Droppable droppableId="list">
+          {(provided) => (
+            <div {...provided.droppableProps} ref={provided.innerRef}>
+              <List />
+              {provided.placeholder}
+            </div>
+          )}
+        </Droppable>
+      </DragDropContext>
+    </div>
   );
 };
 

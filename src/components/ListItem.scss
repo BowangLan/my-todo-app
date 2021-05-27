@@ -4,7 +4,8 @@
   justify-content: space-between;
   align-items: center;
   gap: 8px;
-  transition: background-color 200ms ease-in;
+  // transition: background-color 200ms ease-in;
+  cursor: pointer;
 
   // &:hover {
   //   filter: brightness(1.2);
@@ -36,6 +37,11 @@
       font-family: inherit;
       text-overflow: ellipsis;
     }
+
+    input,
+    .item-text {
+      font-size: 16px;
+    }
   }
 
   .icon {
@@ -45,7 +51,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: all 500ms;
+    transition: all 500ms ease 0s;
+  }
+
+  .cross-icon {
+    display: none;
+    transition: color 250ms ease-in 0s, opacity 200ms ease-in 0s;
+  }
+
+  &:hover {
+    .cross-icon {
+      display: inline;
+    }
   }
 
   .checked-icon {

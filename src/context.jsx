@@ -1,5 +1,6 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useCallback } from "react";
 import useTheme from "./useTheme";
+import { jsx, ThemeProvider } from "@emotion/react";
 import useMobile from "./useMobile";
 import useLocalStorage from "./useLocalStorage";
 
@@ -15,11 +16,16 @@ const GlobalContextProvider = ({ children }) => {
   const [classes, isDark, setIsDark] = useTheme(false);
   const [isMobile, setIsMobile] = useMobile(mobileMaxWidth);
 
+  const handleClear = useCallback(() => {
+    setTodoList((preList) => preList.filter((item) => !item.check));
+  }, []);
+
   return (
     <globalContext.Provider
       value={{
         todoList,
         setTodoList,
+        handleClear,
         tabList,
         currentTab,
         setCurrentTab,

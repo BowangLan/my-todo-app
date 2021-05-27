@@ -1,25 +1,10 @@
 import React, { useEffect, useMemo } from "react";
 // import "./ListContainer.scss";
 import DNDListItem from "./DNDListItem";
-import { TransitionGroup, CSSTransition } from "react-transition-group";
 import { useGlobalContext } from "../context";
 import { v4 as uuid } from "uuid";
 
-const List = ({}) => {
-  const { classes, todoList, setTodoList, currentTab, isMobile } =
-    useGlobalContext();
-
-  const containerClasses = useMemo(
-    () =>
-      [
-        "list-container",
-        classes.bg,
-        isMobile ? classes.shadow : null,
-        isMobile ? "round" : null,
-      ].join(" "),
-    [classes, isMobile]
-  );
-
+const ListInner = ({ todoList, setTodoList, currentTab }) => {
   useEffect(() => {
     const storedTodoList = localStorage.getItem("todoList");
     if (!storedTodoList) {
@@ -53,22 +38,30 @@ const List = ({}) => {
   console.log("Rendering list...");
 
   return (
-    <TransitionGroup className={containerClasses}>
+    <>
       {currentTodoList.map((item, index) => {
         return (
-          <CSSTransition key={item.id} timeout={300} classNames="item">
+          <div key={item.id} timeout={300} classNames="item">
             <DNDListItem index={index} item={item} />
-            {/* <ListItem
-              text={item.text}
-              id={item.id}
-              check={item.check}
-              {...itemProps}
-            /> */}
-          </CSSTransition>
+          </div>
         );
       })}
-    </TransitionGroup>
+    </>
   );
 };
 
-export default React.memo(List);
+const List = ({}) => {
+  const { todoList, setTodoList, currentTab } = useGlobalContext();
+  return useMemo(
+    () => (
+      <ListInner
+        todoList={todoList}
+        setTodoList={setTodoList}
+        currentTab={currentTab}
+      />
+    ),
+    [todoList, currentTab]
+  );
+};
+
+export default List;
